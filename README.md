@@ -2,7 +2,7 @@
 
 - 本仓库为前端技术栈 [Vue3](https://v3.cn.vuejs.org) + [Vant3](https://vant-contrib.gitee.io/vant/v3/#/zh-CN) + [Vite2](https://cn.vitejs.dev) 版本。
 
-## 移动端技术方案
+## 移动端布局方案
 
 - 移动端 Vant3.x + Vue3.x + Vite2.x + Mockjs + Vue-Router4.x + Vuex4.x + REM(postcss-pxtorem) 布局布局的实例运用
 
@@ -16,14 +16,29 @@
 - postcss.config.js
   postcss 配置文件
 
+## 分支介绍
+
+### master 分支
+
+1. 简单 demo 示例。
+
+### dev 分支
+
+1. 这里是列表文本通过 mock 数据，实现了首页，某东分类，某多分类，购物车（部分功能），我的(可进入江苏旅游舒适度页面）
+
+
+### simple 分支
+
+1. 基础框架
+
 ## 前端运行
 
 ```bash
 # 克隆项目
-# git clone https://gitee.com/jifengf/vue3-h5-demo.git
+# git clone https://gitee.com/jifengf/vite-vue3-h5.git
 
 # 进入项目目录
-cd Vue3-H5-DEMO
+cd vite-vue3-h5
 
 # 安装依赖
 npm install
