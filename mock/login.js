@@ -8,8 +8,36 @@ export default [
       return {
         code: 200,
         msg: "操作成功",
-        token: "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY1N2U3OWI0LWNmZTMtNGMxZS1iNjI2LWRlM2UxMTNkYjBkOSJ9.nfRBs-hhP9fuHf9Aozz8VzPpQ44e4nCKMivg27pRth3BvxvVOyav0Ec6vI_KlUOuCnJLU2RebdmzkA584GdXtw"
+        token:
+          "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY1N2U3OWI0LWNmZTMtNGMxZS1iNjI2LWRlM2UxMTNkYjBkOSJ9.nfRBs-hhP9fuHf9Aozz8VzPpQ44e4nCKMivg27pRth3BvxvVOyav0Ec6vI_KlUOuCnJLU2RebdmzkA584GdXtw"
+      };
+    }
+  },
+  {
+    url: "/logout",
+    method: "post",
+    response: () => {
+      return {
+        code: 200,
+        msg: "操作成功",
+        token: ""
+      };
+    }
+  },
+  {
+    url: "/getInfo",
+    method: "get",
+    response: () => {
+      return {
+        code: 200,
+        msg: "操作成功",
+        token:
+          "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY1N2U3OWI0LWNmZTMtNGMxZS1iNjI2LWRlM2UxMTNkYjBkOSJ9.nfRBs-hhP9fuHf9Aozz8VzPpQ44e4nCKMivg27pRth3BvxvVOyav0Ec6vI_KlUOuCnJLU2RebdmzkA584GdXtw",
+        user: {
+          name: "wax1026",
+          avatar: "https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
+        }
       };
     }
   }
-]
+];

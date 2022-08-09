@@ -25,6 +25,7 @@
     "lib-flexible": "^0.3.2",
     "lodash": "^4.17.21",
     "mockjs": "^1.1.0",
+    "pinia": "^2.0.17",
     "vant": "^3.3.7",
     "vite-plugin-style-import": "^1.4.0",
     "vue": "^3.2.22",

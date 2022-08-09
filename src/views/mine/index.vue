@@ -1,22 +1,33 @@
 <template>
   <div class="container">
+    <div style="padding: 12px; display: flex; align-items: center">
+      <van-image
+        fit="cover"
+        round
+        width="80"
+        height="80"
+        :src="userStore.avatar"
+      />
+      <div class="title">{{ userStore.name }}</div>
+    </div>
     <div style="padding: 12px">
-      <div class="title">我</div>
       <van-button block type="danger" @click="handleLogout" size="small"
         >登出</van-button
       >
-      <br />
     </div>
   </div>
 </template>
 
 <script setup name="Mine">
+import useUserStore from "@/store/modules/user";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 
 const stickyRef = ref();
 const tabbarRef = ref();
 const containerHeight = ref("");
 const tabbarHeight = ref("");
+
+const userStore = useUserStore();
 
 nextTick(() => {
   containerHeight.value = stickyRef.value?.$el?.offsetHeight + "px";
@@ -31,8 +42,10 @@ nextTick(() => {
 const router = useRouter();
 
 const handleLogout = () => {
-  removeToken(); // 移除token
-  router.push({ path: "/login" }); //跳转到登录页
+  // removeToken(); // 移除token
+  userStore.logout().then((res) => {
+    router.push({ path: "/login" }); //跳转到登录页
+  });
 };
 </script>
 <style scoped>

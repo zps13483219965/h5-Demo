@@ -28,14 +28,15 @@
   </van-form>
   <!--  底部  -->
   <footer class="footer">
-    <div>Copyright © 2018-2021 All Rights Reserved.</div>
+    <div>Copyright © 2018-202X All Rights Reserved.</div>
   </footer>
 </template>
 
 <script setup>
-const store = useStore();
+import useUserStore from "@/store/modules/user";
 const router = useRouter();
 const { proxy } = getCurrentInstance();
+const userStore = useUserStore();
 
 const loginForm = ref({
   username: "admin",
@@ -49,10 +50,12 @@ function handleLogin() {
   loading.value = true;
   console.log("redirect.value", redirect.value);
   // 调用action的登录方法
-  store
-    .dispatch("Login", loginForm.value)
+  userStore
+    .login(loginForm.value)
     .then(() => {
-      router.push({ path: redirect.value || "/home/index" });
+      userStore.getInfo().then((res) => {
+        router.push({ path: redirect.value || "/home/index" });
+      });
     })
     .catch(() => {
       loading.value = false;

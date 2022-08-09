@@ -1,29 +1,17 @@
 import { login, logout, getInfo } from "@/api/login";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 import defAva from "@/assets/logo/favicon.png";
-
-const user = {
-  state: {
+const useUserStore = defineStore("user", {
+  state: () => ({
     token: getToken(),
     name: "",
-    avatar: ""
-  },
-
-  mutations: {
-    SET_TOKEN: (state, token) => {
-      state.token = token;
-    },
-    SET_NAME: (state, name) => {
-      state.name = name;
-    },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar;
-    }
-  },
-
+    avatar: "",
+    roles: [],
+    permissions: []
+  }),
   actions: {
     // 登录
-    Login({ commit }, userInfo) {
+    login(userInfo) {
       const username = userInfo.username.trim();
       const password = userInfo.password;
       const code = userInfo.code;
@@ -33,7 +21,7 @@ const user = {
         login(username, password, code, uuid)
           .then((res) => {
             setToken(res.token);
-            commit("SET_TOKEN", res.token);
+            this.token = res.token;
             resolve();
           })
           .catch((error) => {
@@ -43,17 +31,14 @@ const user = {
     },
 
     // 获取用户信息
-    GetInfo({ commit, state }) {
+    getInfo() {
       return new Promise((resolve, reject) => {
         getInfo()
           .then((res) => {
             const user = res.user;
-            const avatar =
-              user.avatar == ""
-                ? defAva
-                : import.meta.env.VITE_APP_BASE_API + user.avatar;
-            commit("SET_NAME", user.userName);
-            commit("SET_AVATAR", avatar);
+            const avatar = user.avatar == "" ? defAva : user.avatar;
+            this.name = user.name;
+            this.avatar = avatar;
             resolve(res);
           })
           .catch((error) => {
@@ -63,11 +48,11 @@ const user = {
     },
 
     // 退出系统
-    LogOut({ commit, state }) {
+    logout() {
       return new Promise((resolve, reject) => {
-        logout(state.token)
+        logout(this.token)
           .then(() => {
-            commit("SET_TOKEN", "");
+            this.token = "";
             removeToken();
             resolve();
           })
@@ -78,14 +63,14 @@ const user = {
     },
 
     // 前端 登出
-    FedLogOut({ commit }) {
+    fedLogOut() {
       return new Promise((resolve) => {
-        commit("SET_TOKEN", "");
+        this.token = "";
         removeToken();
         resolve();
       });
     }
   }
-};
+});
 
-export default user;
+export default useUserStore;

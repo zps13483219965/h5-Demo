@@ -5,9 +5,7 @@ export default function createAutoImport() {
     imports: [
       'vue',
       'vue-router',
-      {
-        'vuex': ['useStore']
-      }
+      'pinia',  // 移除vuex 切换pinia
     ],
     dts: false
   })
