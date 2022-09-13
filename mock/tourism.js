@@ -1,6 +1,6 @@
 export default [
   {
-    url: "1111/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scemanage/api/queryScenicScopeDetail",
+    url: "/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scemanage/api/queryScenicScopeDetail",
     method: "get",
     response: () => {
       return {
@@ -27,7 +27,7 @@ export default [
     }
   },
   {
-    url: "22222/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scepassflow/api/selectCommonDic/multi",
+    url: "/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scepassflow/api/selectCommonDic/multi",
     method: "post",
     response: () => {
       return {
@@ -134,7 +134,7 @@ export default [
     }
   },
   {
-    url: "33333/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scepassflow/api/queryPCPassFlow",
+    url: "/JSCTO_SCENIC_COMFORT_MS/gateway/ms_scepassflow/api/queryPCPassFlow",
     method: "get",
     response: () => {
       return {
